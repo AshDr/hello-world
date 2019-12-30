@@ -1,0 +1,6 @@
+#include<iostream>
+using namespacet std;
+int main()
+{ int a;
+return 0;
+}
