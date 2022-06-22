@@ -116,5 +116,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=/home/acs/.homework:$PATH #change this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 alias tmux='tmux -u'
