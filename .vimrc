@@ -241,3 +241,16 @@ set expandtab
 " 主要给Tlist使用
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Auto_Open = 1
+
+"下载插件 需要vim-plug
+call plug#begin('~/.vim/plugged')
+
+" Pretty Dress
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'connorholyday/vim-snazzy'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'ayu-theme/ayu-vim'
+Plug 'bling/vim-bufferline'
+
+call plug#end()
