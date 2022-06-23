@@ -125,12 +125,12 @@ set t_Co=256
 "colorscheme wombat256mod
 "colorscheme gardener
 "colorscheme elflord
-colorscheme desert
+"colorscheme desert
 "colorscheme evening
 "colorscheme darkblue
 "colorscheme torte
 "colorscheme default
-
+ colorscheme ron
 " 字体 && 字号
 set guifont=Monaco:h10
 "set guifont=Consolas:h10
