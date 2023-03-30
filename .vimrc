@@ -1,3 +1,11 @@
+let mapleader=" "
+"设置不同模式下的指针
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+"让指针总是在上一次编辑的位置
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 " An example for a vimrc file.
 "
 " To use it, copy it to
@@ -15,6 +23,7 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+set scrolloff=5
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 "取消响铃
@@ -33,7 +42,8 @@ set incsearch		" do incremental searching
 "==========================================================================
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
-
+"设置在当前文件下进行操作
+set autochdir
 "语法高亮
 syntax enable
 syntax on
@@ -45,7 +55,7 @@ set nu
 "允许退格键删除
 "set backspace=2
 "启用鼠标
-set mouse=a
+"set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
 "按C语言格式缩进
@@ -232,7 +242,7 @@ endif " has("autocmd")
 
 " 增加鼠标行高亮
 set cursorline
-hi CursorLine  cterm=NONE   ctermbg=darkred ctermfg=white
+" hi CursorLine  cterm=NONE   ctermbg=white ctermfg=red
 
 " 设置tab是四个空格
 set ts=4
@@ -242,15 +252,40 @@ set expandtab
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Auto_Open = 1
 
+" map key start here
+map S :w<CR>
+set showcmd
+set wildmenu
+nnoremap <LEADER><CR> :nohlsearch<CR>
+"分屏操作
+map sl :set splitright<CR>:vsplit<CR>
+map sh :set nosplitright<CR>:vsplit<CR>
+map sj :set splitbelow<CR>:split<CR>
+map sk :set nosplitbelow<CR>:split<CR>
+map <LEADER>l <C-w>l
+map <LEADER>h <C-w>h
+map <LEADER>j <C-w>j
+map <LEADER>k <C-w>k
+map <LEADER><up> :res +5<CR>
+map <LEADER><down> :res -5<CR>
+map <LEADER><left> :vertical resize-5<CR>
+map <LEADER><right> :vertical resize+5<CR>
+map <LEADER>[ <C-w>t<C-w>K
+map <LEADER>] <C-w>t<C-w>H
+" NerdTree
+let NERDTreeShowHidden=1
+nnoremap <C-t> :NERDTreeToggle<CR>
+
 "下载插件 需要vim-plug
 call plug#begin('~/.vim/plugged')
 
 " Pretty Dress
+Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'connorholyday/vim-snazzy'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
 Plug 'bling/vim-bufferline'
-
+Plug 'scrooloose/nerdtree'
 call plug#end()
