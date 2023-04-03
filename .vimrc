@@ -1,5 +1,4 @@
 let mapleader=" "
-
 "设置不同模式下的指针
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -273,9 +272,41 @@ map <LEADER><left> :vertical resize-5<CR>
 map <LEADER><right> :vertical resize+5<CR>
 map <LEADER>[ <C-w>t<C-w>K
 map <LEADER>] <C-w>t<C-w>H
+
+"切换tab 配合vim-airline使用
+
+map tn :tabnew<CR>
+map <Tab> :bn<CR>
+map <S-Tab> :bp<CR>
+
 " NerdTree
 let NERDTreeShowHidden=1
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap tt :NERDTreeToggle<CR>
+
+
+" vim airline
+"
+" 允许 airline 在顶部显示 Buffer 列表
+let g:airline#extensions#tabline#enabled = 1
+
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" 显示 buffer 编号，方便切换
+let g:airline#extensions#tabline#buffer_nr_show=1
+
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+
+
+" ===
+" === You Complete ME
+" ===
+nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap g/ :YcmCompleter GetDoc<CR>
+nnoremap gt :YcmCompleter GetType<CR>
+nnoremap gr :YcmCompleter GoToReferences<CR>
+nnoremap gi :YcmCompleter GoToInclude<CR>
 
 "下载插件 需要vim-plug
 call plug#begin('~/.vim/plugged')
