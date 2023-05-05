@@ -308,6 +308,14 @@ nnoremap gt :YcmCompleter GetType<CR>
 nnoremap gr :YcmCompleter GoToReferences<CR>
 nnoremap gi :YcmCompleter GoToInclude<CR>
 
+"===
+"=== FZF
+"===
+set rtp+=/usr/local/opt/fzf
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>,{'options': ['--layout=reverse', '--info=inline', '--preview', '[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || bat -n --color=always {} | head -500']}, <bang>0)
+map <C-f> :Files<CR>
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+
 "下载插件 需要vim-plug
 call plug#begin('~/.vim/plugged')
 
@@ -320,4 +328,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
 Plug 'bling/vim-bufferline'
 Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
+

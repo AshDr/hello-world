@@ -117,3 +117,13 @@ if ! shopt -oq posix; then
 fi
 
 alias tmux='tmux -u'
+alias setproxy="export http_proxy=http://127.0.0.1:7890/; export https_proxy=http://127.0.0.1:7890/; echo 'Set proxy successfully'"
+alias unsetproxy="unset http_proxy; unset https_proxy; echo 'Unset proxy successfully'"
+source /home/ashdr/alacritty/extra/completions/alacritty.bash
+export NEMU_HOME=/home/ashdr/code/ics2021/nemu
+export AM_HOME=/home/ashdr/code/ics2021/abstract-machine
+if [ -t 1 ]; then
+    exec zsh
+fi
+
+
