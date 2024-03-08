@@ -8,7 +8,13 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=af-magic
+
+#ZSH_THEME="af-magic"
+ZSH_THEME="alanpeabody"
+
+
+
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -69,7 +75,7 @@ ZSH_THEME=af-magic
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,46 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-alias tmux='tmux -u'
-alias setproxy="export http_proxy=http://127.0.0.1:7890/; export https_proxy=http://127.0.0.1:7890/; echo 'Set proxy successfully'"
-alias unsetproxy="unset http_proxy; unset https_proxy; echo 'Unset proxy successfully'"
-source /home/ashdr/alacritty/extra/completions/alacritty.bash
-export NEMU_HOME=/home/ashdr/code/ics2021/nemu
-export AM_HOME=/home/ashdr/code/ics2021/abstract-machine
-# fzf
-export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --inline-info"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
-#export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_COMPLETION_TRIGGER='`'
-export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-#zsh-suggsetion
-#export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#0059ff,bg=cyan,bold,underline"
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
-    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
-  esac
-}
-
-
-
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-alias vim=nvim
+alias vim="nvim"
+alias setproxy="export http_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890;echo 'setproxy successfully!'" alias unsetproxy="unset http_proxy;unset https_proxy; echo 'unset proxy successfully!'"
+export PATH="/Library/TeX/texbin:/usr/local/mysql/bin:$PATH"
+export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/lib"
+export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1"
+export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
