@@ -110,3 +110,8 @@ export PATH="/Library/TeX/texbin:/usr/local/mysql/bin:$PATH"
 export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/lib"
 export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1"
 export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
+export HOMEBREW_NO_AUTO_UPDATE=true
+
+# Created by `pipx` on 2024-06-02 06:35:05
+export PATH="$PATH:/Users/chenhao/.local/bin"
+
